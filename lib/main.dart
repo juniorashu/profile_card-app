@@ -1,9 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:profile_card_app/profileimageuploader.dart';
 
-Future  <void> main() async {
-   await dotenv.load();// Load environment variables ONCE
+
+
+Future <void> main() async   {
+   
+   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); // Initialize Firebase
   runApp(const ProfileApp());
 }
 
@@ -21,10 +25,9 @@ class ProfileApp extends StatelessWidget {
 }
 
 class ProfilePage extends StatelessWidget {
-  final CloudName = dotenv.env['Cloud_Name'];
-  final flutterPerset = dotenv.env['flutter_preset'];
 
-   ProfilePage({super.key});
+
+  ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
